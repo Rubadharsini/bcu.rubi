@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#111827">
+<meta name="description" content="Rubi's Birmingham City University portfolio and student journey.">
+<title>Rubi | BCU Portfolio</title>
+<style>
+:root {
+  --ink:#0f172a; --muted:#64748b; --paper:#f8fafc; --card:#ffffff;
+  --blue:#2563eb; --violet:#7c3aed; --line:#e2e8f0; --dark:#0b1220;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--paper);line-height:1.6}
+a{color:inherit;text-decoration:none}
+.container{width:min(1160px,92%);margin:auto}
+.nav{position:fixed;top:0;left:0;right:0;z-index:20;background:rgba(248,250,252,.82);backdrop-filter:blur(16px);border-bottom:1px solid rgba(226,232,240,.75)}
+.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:900;letter-spacing:-.04em;font-size:1.15rem}
+.logo span{color:var(--blue)}
+.navlinks{display:flex;gap:24px;font-size:.92rem;font-weight:700;color:#475569}
+.navlinks a:hover{color:var(--blue)}
+.hero{min-height:92vh;padding:130px 0 70px;background:
+radial-gradient(circle at 82% 15%,rgba(124,58,237,.13),transparent 28%),
+radial-gradient(circle at 10% 30%,rgba(37,99,235,.12),transparent 30%),
+linear-gradient(180deg,#fff 0%,#f8fafc 100%)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:58px;align-items:center}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:#fff;font-weight:800;font-size:.8rem;color:#334155;box-shadow:0 8px 30px rgba(15,23,42,.05)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 6px rgba(37,99,235,.12)}
+h1{font-size:clamp(3.1rem,7vw,6.5rem);line-height:.94;letter-spacing:-.07em;margin:24px 0 24px}
+.gradient{background:linear-gradient(100deg,#111827 15%,#2563eb 52%,#7c3aed);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:1.15rem;color:#475569;max-width:610px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 17px;border-radius:12px;font-weight:850;border:1px solid var(--line);background:#fff}
+.btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(15,23,42,.1)}
+.hero-collage{position:relative;min-height:560px}
+.hero-collage img{position:absolute;width:58%;height:330px;object-fit:cover;border-radius:24px;box-shadow:0 25px 70px rgba(15,23,42,.2);border:8px solid rgba(255,255,255,.88)}
+.hero-collage img:nth-child(1){right:0;top:10px;transform:rotate(3deg)}
+.hero-collage img:nth-child(2){left:2%;top:145px;transform:rotate(-4deg);height:360px}
+.hero-collage img:nth-child(3){right:10%;bottom:0;height:280px;transform:rotate(2deg)}
+.badge{position:absolute;z-index:4;left:45%;top:47%;background:var(--dark);color:#fff;padding:15px 17px;border-radius:16px;font-weight:900;box-shadow:0 18px 40px rgba(15,23,42,.3)}
+.section{padding:100px 0}
+.section.alt{background:#fff}
+.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:42px}
+.kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;font-weight:900;color:var(--blue)}
+h2{font-size:clamp(2rem,4vw,3.4rem);line-height:1;letter-spacing:-.05em;margin:9px 0 0}
+.section-head p{max-width:520px;color:var(--muted);margin:0}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{padding:24px;border:1px solid var(--line);border-radius:18px;background:#fff}
+.stat b{font-size:1.7rem;display:block}
+.stat span{font-size:.9rem;color:var(--muted)}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.story-card{padding:34px;border-radius:26px;background:var(--dark);color:#fff;min-height:320px;display:flex;flex-direction:column;justify-content:end;overflow:hidden;position:relative}
+.story-card:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(37,99,235,.75),rgba(124,58,237,.45));opacity:.8}
+.story-card>*{position:relative;z-index:1}
+.story-card h3{font-size:2rem;letter-spacing:-.04em;margin:8px 0}
+.story-card p{color:#dbeafe;margin:0}
+.story-copy{padding:34px;border:1px solid var(--line);border-radius:26px;background:#f8fafc}
+.story-copy h3{font-size:1.55rem;margin-top:0}
+.story-copy li{margin:11px 0;color:#475569}
+.gallery{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
+.item{position:relative;overflow:hidden;border-radius:20px;background:#e2e8f0;min-height:290px;grid-column:span 4;cursor:pointer}
+.item.tall{grid-row:span 2;min-height:594px}
+.item.wide{grid-column:span 8}
+.item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .55s ease,filter .55s ease}
+.item:hover img{transform:scale(1.045);filter:saturate(1.08)}
+.caption{position:absolute;left:12px;right:12px;bottom:12px;padding:15px;border-radius:16px;background:rgba(11,18,32,.78);backdrop-filter:blur(12px);color:#fff}
+.caption small{color:#bfdbfe;font-weight:800;text-transform:uppercase;letter-spacing:.1em}
+.caption strong{display:block;margin-top:3px;font-size:1rem}
+.lightbox{position:fixed;inset:0;background:rgba(2,6,23,.92);z-index:50;display:none;align-items:center;justify-content:center;padding:24px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:94vw;max-height:88vh;object-fit:contain;border-radius:16px}
+.close{position:fixed;top:20px;right:24px;color:#fff;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:12px;padding:10px 14px;font-size:1.1rem;cursor:pointer}
+.quote{padding:45px;border-radius:28px;background:linear-gradient(135deg,#111827,#1e293b);color:#fff;text-align:center}
+.quote p{font-size:clamp(1.35rem,3vw,2.25rem);line-height:1.25;letter-spacing:-.03em;max-width:850px;margin:0 auto 18px}
+.quote span{color:#94a3b8;font-weight:700}
+footer{padding:34px 0;background:#020617;color:#94a3b8}
+footer .row{display:flex;justify-content:space-between;gap:20px;align-items:center}
+footer b{color:#fff}
+@media(max-width:850px){
+.navlinks{display:none}
+.hero-grid,.story{grid-template-columns:1fr}
+.hero{padding-top:110px}
+.hero-collage{min-height:500px}
+.stats{grid-template-columns:repeat(2,1fr)}
+.gallery{grid-template-columns:repeat(2,1fr)}
+.item,.item.wide{grid-column:span 1}
+.item.tall{grid-row:span 1;min-height:290px}
+.section-head{display:block}
+.section-head p{margin-top:15px}
+}
+@media(max-width:560px){
+.hero-collage img{width:68%;height:250px!important}
+.hero-collage img:nth-child(2){left:0;top:145px}
+.hero-collage img:nth-child(3){right:0;bottom:20px}
+.badge{left:35%;top:45%;font-size:.8rem}
+.stats{grid-template-columns:1fr 1fr}
+.gallery{grid-template-columns:1fr}
+.item,.item.wide{grid-column:span 1}
+}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a class="logo" href="#top">Rubi<span>.</span>BCU</a>
+    <div class="navlinks">
+      <a href="#journey">Journey</a><a href="#campus">Campus</a><a href="#gallery">Gallery</a><a href="#reflection">Reflection</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow"><span class="dot"></span> Birmingham City University · Student Portfolio</div>
+      <h1>Rubi's<br><span class="gradient">BCU Journey.</span></h1>
+      <p class="lead">A visual portfolio capturing the places, people, learning spaces and small moments that shape a new chapter at Birmingham City University.</p>
+      <div class="actions">
+        <a class="btn primary" href="#gallery">Explore the journey ↓</a>
+        <a class="btn" href="#reflection">Read my reflection</a>
+      </div>
+    </div>
+    <div class="hero-collage" aria-label="BCU campus photo collage">
+      <img src="images/bcu-11.jpg" alt="BCU campus">
+      <img src="images/bcu-04.jpg" alt="Millennium Point">
+      <img src="images/bcu-15.jpg" alt="Rubi at BCU">
+      <div class="badge">I AM BCU ✦</div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="journey">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="kicker">01 · The chapter</div><h2>From arrival to belonging.</h2></div>
+      <p>This portfolio turns a collection of campus photographs into a personal visual story — from first impressions to the spaces that now feel familiar.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>BCU</b><span>Birmingham City University</span></div>
+      <div class="stat"><b>UK</b><span>A new academic environment</span></div>
+      <div class="stat"><b>16</b><span>Visual moments captured</span></div>
+      <div class="stat"><b>∞</b><span>Possibilities ahead</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="campus">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="kicker">02 · Campus life</div><h2>More than a classroom.</h2></div>
+      <p>Millennium Point, study areas, the library, student spaces and career support all become part of the wider university experience.</p>
+    </div>
+    <div class="story">
+      <div class="story-card">
+        <div class="kicker" style="color:#bfdbfe">A visual diary</div>
+        <h3>Every corridor has a story.</h3>
+        <p>Architecture, signs, stairs, study spaces and student activity — ordinary details that make the first chapter memorable.</p>
+      </div>
+      <div class="story-copy">
+        <h3>What these photographs represent</h3>
+        <ul>
+          <li><b>Learning:</b> spaces for focused study, research and collaboration.</li>
+          <li><b>Community:</b> welcome spaces and student-led activity.</li>
+          <li><b>Career:</b> visible access to careers and student opportunities.</li>
+          <li><b>Identity:</b> the moment a university starts to feel like “my” place.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="gallery">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="kicker">03 · Visual archive</div><h2>The BCU gallery.</h2></div>
+      <p>Click any photograph to view it larger. The layouts intentionally vary so the portfolio feels editorial rather than like a basic photo dump.</p>
+    </div>
+    <div class="gallery">
+
+      <article class="item tall" data-full="images/bcu-01.jpg" onclick="openLightbox(this)">
+        <img src="images/bcu-01.jpg" alt="First view of Birmingham City University" loading="lazy">
+        <div class="caption"><small>Campus</small><strong>First view of Birmingham City University</strong></div>
+      </article>
+
+      <article class="item" data-full="images/bcu-02.jpg" onclick="openLightbox(this)">
+        <img src="images/bcu-02.jpg" alt="Millennium Point" loading="lazy">
+        <div class="caption"><small>Campus</small><strong>Millennium Point</strong></div>
+      </article>
+
+      <article class="item" data-full="images/bcu-03.jpg" onclick="openLightbox(this)">
+        <img src="images/bcu-03.jpg" alt="A walk into campus life" loading="lazy">
+        <div class="caption"><small>Campus</small><strong>A walk into campus life</strong></div>
+      </article>
+
+      <article class="item wide" data-full="images/bcu-04.jpg" onclick="openLightbox(this)">
+        <img src="images/bcu-04.jpg" alt="Inside Millennium Point" loading="lazy">
+        <div class="caption"><small>Learning</small><strong>Inside Millennium Point</strong></div>
+      </article>
+
+      <article class="item" data-full="images/bcu-05.jpg" onclick="openLightbox(this)">
+        <img src="images/bcu-05.jpg" alt="A place to pause" loading="lazy">
+        <div class="caption"><small>Campus Life</small><strong>A place to pause</strong></div>
+      </article>
+
+      <article class="item" data-full="images/bcu-06.jpg" onclick="openLightbox(this)">
+        <img src="images/bcu-06.jpg" alt="Big Welcome" loading="lazy">
+        <div class="caption"><small>Community</small><strong>Big Welcome</strong></div>
+      </article>
+
+      <article class="item" data-full="images/bcu-07.jpg" onclick="openLightbox(this)">
+        <img src="images/bcu-07.jpg" alt="Learning spaces" loading="lazy">
+        <div class="caption"><small>Learning</small><strong>Learning spaces</strong></div>
+      </article>
+
+      <article class="item tall" data-full="images/bcu-08.jpg" onclick="openLightbox(this)">
+        <img src="images/bcu-08.jpg" alt="Library & student life" loading="lazy">
+        <div class="caption"><small>Learning</small><strong>Library & student life</strong></div>
+      </article>
+
+      <article class="item" data-full="images/bcu-09.jpg" onclick="openLightbox(this)">
+        <img src="images/bcu-09.jpg" alt="Careers & opportunities" loading="lazy">
+        <div class="caption"><small>Career</small><strong>Careers & opportunities</strong></div>
+      </article>
+
+      <article class="item wide" data-full="images/bcu-10.jpg" onclick="openLightbox(this)">
+        <img src="images/bcu-10.jpg" alt="A global outlook" loading="lazy">
+        <div class="caption"><small>Career</small><strong>A global outlook</strong></div>
+      </article>
+
+      <article class="item" data-full="images/bcu-11.jpg" onclick="openLightbox(this)">
+        <img src="images/bcu-11.jpg" alt="I AM BCU" loading="lazy">
+        <div class="caption"><small>Identity</small><strong>I AM BCU</strong></div>
+      </article>
+
+      <article class="item" data-full="images/bcu-12.jpg" onclick="openLightbox(this)">
+        <img src="images/bcu-12.jpg" alt="A new chapter" loading="lazy">
+        <div class="caption"><small>Journey</small><strong>A new chapter</strong></div>
+      </article>
+
+      <article class="item tall" data-full="images/bcu-13.jpg" onclick="openLightbox(this)">
+        <img src="images/bcu-13.jpg" alt="Big moments" loading="lazy">
+        <div class="caption"><small>Journey</small><strong>Big moments</strong></div>
+      </article>
+
+      <article class="item" data-full="images/bcu-14.jpg" onclick="openLightbox(this)">
+        <img src="images/bcu-14.jpg" alt="Birmingham, captured" loading="lazy">
+        <div class="caption"><small>Memory</small><strong>Birmingham, captured</strong></div>
+      </article>
+
+      <article class="item" data-full="images/bcu-15.jpg" onclick="openLightbox(this)">
+        <img src="images/bcu-15.jpg" alt="Finding my place" loading="lazy">
+        <div class="caption"><small>Growth</small><strong>Finding my place</strong></div>
+      </article>
+
+      <article class="item wide" data-full="images/bcu-16.jpg" onclick="openLightbox(this)">
+        <img src="images/bcu-16.jpg" alt="The BCU journey" loading="lazy">
+        <div class="caption"><small>Reflection</small><strong>The BCU journey</strong></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="reflection">
+  <div class="container">
+    <div class="section-head">
+      <div><div class="kicker">04 · Reflection</div><h2>A new chapter, documented.</h2></div>
+      <p>The strongest portfolios don't only show what happened — they show what it meant.</p>
+    </div>
+    <div class="quote">
+      <p>“Starting a new chapter in Birmingham is not only about earning a degree. It is about learning in a new environment, meeting new people, building confidence and creating the next version of myself.”</p>
+      <span>— Rubi · BCU Portfolio</span>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container row">
+    <div><b>Rubi.BCU</b><br>Student journey · Birmingham City University</div>
+    <div>© 2026 · Built as a personal portfolio</div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="close" onclick="closeLightbox(event)">✕</button>
+  <img id="lightboxImg" src="" alt="Expanded BCU photograph">
+</div>
+
+<script>
+function openLightbox(el) {{
+  document.getElementById('lightboxImg').src = el.dataset.full;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}}
+function closeLightbox(e) {{
+  if (e.target.id === 'lightbox' || e.target.classList.contains('close')) {{
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow='';
+  }}
+}}
+document.addEventListener('keydown', e => {{
+  if (e.key === 'Escape') {{
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow='';
+  }}
+}});
+</script>
+</body>
+</html>
